@@ -1,6 +1,7 @@
 import LateralMenu from "./LateralMenu"
 import TopBar from "./TopBar"
 import Content from "./Content"
+import useAppData from "@/data/context/hook/useAppData"
 
 interface LayoutProps {
   title: string
@@ -10,9 +11,10 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
+  const {theme} = useAppData()
   return(
     <div className={`
-      flex h-screen w-screen dark
+      flex h-screen w-screen ${theme}
     `}>     
       <LateralMenu /> 
       <div className={`flex flex-col w-full bg-gray-300 dark:bg-gray-800 p-7`}>
