@@ -4,7 +4,9 @@ import Logo from "./Logo"
 
 export default function LateralMenu() {
   return(
-    <aside className={`flex flex-col`}>
+    <aside className={`flex flex-col
+     dark:bg-gray-900 
+      bg-gray-200 `}>
       <div className={`flex flex-col justify-center items-center h-20 w-20 
         bg-gradient-to-r from-indigo-500 to-purple-800`}>
           <Logo />
@@ -16,7 +18,8 @@ export default function LateralMenu() {
       </ul>
       <ul>
         <ItemsMenu text="Sair" icon={LogoutIcon} onClick={() => console.log('Você saiu.')}
-        className={`text-red-600 duration-300 hover:bg-red-500 hover:text-white`}/>
+        className={`text-red-600 dark:text-red-400 duration-300 hover:bg-red-500
+         hover:text-white dark:hover:text-white`}/>
       </ul>
     </aside>
   )

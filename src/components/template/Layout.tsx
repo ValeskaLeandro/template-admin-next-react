@@ -12,7 +12,7 @@ interface LayoutProps {
 export default function Layout(props: LayoutProps) {
   return(
     <div className={`
-      flex h-screen w-screen
+      flex h-screen w-screen dark
     `}>     
       <LateralMenu /> 
       <div className={`flex flex-col w-full bg-gray-300 dark:bg-gray-800 p-7`}>
