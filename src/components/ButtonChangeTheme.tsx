@@ -7,7 +7,7 @@ interface ButtonChangeThemeProps {
 export default function ButtonChangeTheme(props: ButtonChangeThemeProps) {
   return props.theme === 'dark' ? (
     <div onClick={props.changeTheme} className={`
-       hidden sm:flex items-center cursor-pointer
+      hidden sm:flex items-center cursor-pointer
       bg-gradient-to-r from-yellow-300 to-yellow-600
       lg:w-24 w-14 h-8 p-1 rounded-full
       `}>
