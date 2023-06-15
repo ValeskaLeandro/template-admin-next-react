@@ -1,8 +1,10 @@
 import AuthInput from "@/components/auth/AuthInput";
 import { WarningIcon } from "@/components/icons";
-import { SetStateAction, useState } from "react";
+import useAuth from "@/data/context/hook/useAuth";
+import { useState } from "react";
 
 export default function Auth(){
+  const {user, loginGoogle} = useAuth()
   const [mode, setMode] = useState<'login' | 'register'>("login")
   const [email, setEmail] = useState("")
   const [error, setError] = useState<string | null>(null);
@@ -66,11 +68,11 @@ export default function Auth(){
 
         <hr className="my-6 border-gray-300 w-full"/>
 
-        <button onClick={submit} className={`
+        <button onClick={loginGoogle} className={`
           w-full bg-red-500 hover:bg-red-400 text-white rounded-lg
           px-4 py-3
         `}>
-        {mode === 'login'? 'Entrar com Google': 'Cadastrar com Google'}
+        {mode === 'login'? 'Entrar com Google': 'Cadastrar'}
         </button>
 
         {mode === 'login'? (
