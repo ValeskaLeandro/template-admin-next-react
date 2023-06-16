@@ -6,6 +6,7 @@ import Cookies from 'js-cookie'
 
 interface AuthContextProps{
   user: User | null
+  loading?: boolean
   loginGoogle: () => Promise<void>
   logout: () => Promise<void>
 }
@@ -87,11 +88,14 @@ export function AuthProvider(props: any) {
     if(Cookies.get('admin-template-vls-auth')){
       const cancel = firebase.auth().onIdTokenChanged(sessionConfig)
       return () => cancel()
+    } else {
+      setLoading(false)
     }    
   }, [])
   return(
     <AuthContext.Provider value={{
       user,
+      loading,
       loginGoogle,
       logout
     }}>
