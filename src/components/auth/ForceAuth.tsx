@@ -4,7 +4,7 @@ import Loading from "../../../public/img/loading.gif"
 import useAuth from "@/data/context/hook/useAuth"
 import router from "next/router"
 
-export default function ForceAuth(props){
+export default function ForceAuth(props: any){
   const {user, loading} = useAuth()
 
   function renderContent(){

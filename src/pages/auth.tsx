@@ -4,7 +4,7 @@ import useAuth from "@/data/context/hook/useAuth";
 import { useState } from "react";
 
 export default function Auth(){
-  const {user, loginGoogle} = useAuth()
+  const {register, login, loginGoogle} = useAuth()
   const [mode, setMode] = useState<'login' | 'register'>("login")
   const [email, setEmail] = useState("")
   const [error, setError] = useState<string | null>(null);
@@ -15,11 +15,19 @@ export default function Auth(){
     setTimeout(() => setError(null), time*1000)
   }
 
-  function submit(){
-    if(mode === 'login'){
-      console.log('Login')
-    } else {
-      console.log('Cadastrar')
+  async function submit(){
+    try {
+      if (mode === 'login') {
+        if (login) {
+          await login(email, password);
+        }
+      } else {
+        if (register) {
+          await register(email, password);
+        }
+      }
+    } catch (e: any) {
+      renderError(e?.message ?? "Erro inesperado")
     }
   }
   return(
@@ -72,7 +80,7 @@ export default function Auth(){
           w-full bg-red-500 hover:bg-red-400 text-white rounded-lg
           px-4 py-3
         `}>
-        {mode === 'login'? 'Entrar com Google': 'Cadastrar'}
+        {mode === 'login'? 'Entrar com Google': 'Entrar com Google'}
         </button>
 
         {mode === 'login'? (
